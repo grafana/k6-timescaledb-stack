@@ -70,7 +70,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -153,7 +153,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -255,7 +255,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -337,7 +337,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -418,7 +418,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -497,7 +497,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "description": "The 95th percentile response time of the target system, with success responses separated from error responses.",
       "fill": 1,
       "fillGradient": 0,
@@ -594,7 +594,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "description": "Request rate, with successful responses separated from failed ones.",
       "fill": 1,
       "fillGradient": 0,
@@ -742,7 +742,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "description": "Failure rate.",
       "fill": 1,
       "fillGradient": 0,
@@ -883,7 +883,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "fontSize": "100%",
       "gridPos": {
         "h": 7,
@@ -974,7 +974,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "fontSize": "100%",
       "gridPos": {
         "h": 7,
@@ -1026,7 +1026,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "fontSize": "100%",
       "gridPos": {
         "h": 7,
@@ -1123,7 +1123,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "description": "Breakdown of response time into its constituent parts.",
       "fill": 1,
       "fillGradient": 0,
@@ -1244,7 +1244,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_MYTIMESCALEDB}",
+      "datasource": "mytimescaledb",
       "description": "Data sent and received per second.",
       "fill": 1,
       "fillGradient": 0,
@@ -1344,7 +1344,7 @@
       {
         "allValue": "'<all>'",
         "current": {},
-        "datasource": "${DS_MYTIMESCALEDB}",
+        "datasource": "mytimescaledb",
         "definition": "",
         "hide": 0,
         "includeAll": true,
