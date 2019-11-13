@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 3,
   "links": [],
   "panels": [
     {
@@ -23,8 +23,8 @@
       "datasource": "mytimescaledb",
       "fontSize": "100%",
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 19,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -95,6 +95,7 @@
       "type": "table"
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 20,
   "style": "dark",
   "tags": [],
@@ -109,5 +110,5 @@
   "timezone": "",
   "title": "Test Runs List",
   "uid": "UoYDJHJZk",
-  "version": 9
+  "version": 2
 }
