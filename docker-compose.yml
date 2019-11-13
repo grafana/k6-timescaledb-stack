@@ -1,0 +1,51 @@
+version: '3.4'
+
+networks:
+  k6:
+  grafana:
+  timescaledb:
+
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest
+    command: postgres -c shared_preload_libraries=timescaledb
+    networks:
+      - k6
+      - grafana
+      - timescaledb
+    ports:
+      - "5432:5432"
+    environment:
+      - PGDATA=/var/lib/postgresql/data/timescaledb
+      - POSTGRES_DB=k6
+      - POSTGRES_USER=k6
+      - POSTGRES_PASSWORD=k6
+
+  grafana:
+    image: grafana/grafana:latest
+    networks:
+      - grafana
+      - timescaledb
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_BASIC_ENABLED=false
+    volumes:
+      - ./grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+      - ./grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+      - ./grafana/dashboard-tests.json:/var/lib/grafana/dashboards/dashboard-tests.json
+      - ./grafana/dashboard-results.json:/var/lib/grafana/dashboards/dashboard-results.json
+
+  k6:
+    image: loadimpact/k6:latest
+    networks:
+      - k6
+    ports:
+      - "6565:6565"
+    environment:
+      - K6_OUT=timescaledb=postgresql://timescaledb:5432/k6
+    volumes:
+      - ./samples:/scripts
+

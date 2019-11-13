@@ -1,0 +1,5 @@
+{
+  "error": {
+    "message": "Datasource named ${DS_MYTIMESCALEDB} was not found"
+  }
+}
