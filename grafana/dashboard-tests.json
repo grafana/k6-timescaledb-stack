@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 3,
   "links": [],
   "panels": [
     {
@@ -66,7 +65,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT distinct tags->>'testid' as test_id, min(ts) as start, max(ts) as end,\n    ('/d/a21-pyAWz/open-source-load-testing-stack?orgId=1&from='\n    || extract(epoch from date_trunc('second', min(ts)))*1000\n    || '&to=' || extract(epoch from date_trunc('second', max(ts)))*1000) as url\nFROM samples\nGROUP BY 1\nORDER BY 3 DESC, 2 DESC",
+          "rawSql": "SELECT distinct tags->>'testid' as test_id, min(ts) as start, max(ts) as end,\n    ('/d/a21-pyAWz/test-result?orgId=1&from='\n    || extract(epoch from date_trunc('second', min(ts)))*1000\n    || '&to=' || extract(epoch from date_trunc('second', max(ts)))*1000) as url\nFROM samples\nGROUP BY 1\nORDER BY 3 DESC, 2 DESC",
           "refId": "A",
           "select": [
             [
@@ -110,5 +109,5 @@
   "timezone": "",
   "title": "Test Runs List",
   "uid": "UoYDJHJZk",
-  "version": 2
+  "version": 4
 }
