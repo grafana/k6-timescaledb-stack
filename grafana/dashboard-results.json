@@ -1,46 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_MYTIMESCALEDB",
-      "label": "mytimescaledb",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "postgres",
-      "pluginName": "PostgreSQL"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.4.4"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "postgres",
-      "name": "PostgreSQL",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -57,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1573225832310,
+  "id": 2,
+  "iteration": 1573725659189,
   "links": [],
   "panels": [
     {
@@ -127,8 +85,29 @@
         {
           "alias": "",
           "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
           "rawSql": "SELECT\n  date_trunc('seconds', ts) AS \"time\",\n  percentile_cont(0.95) WITHIN GROUP (ORDER BY value) AS \"success_95th_resp_time\"\nFROM\n  samples\nWHERE\n  $__timeFilter(ts)\n  AND metric = 'http_req_duration'\n  AND (tags->>'status')::integer < 400\n  AND (CASE WHEN $testid != '<all>' THEN tags->>'testid' = $testid ELSE true END)\nGROUP BY 1\nORDER BY 1 ASC",
-          "refId": "A"
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "thresholds": "",
@@ -310,8 +289,29 @@
         {
           "alias": "",
           "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
           "rawSql": "SELECT\n  date_trunc('seconds', ts) AS \"time\",\n  MAX(value) AS \"vus\"\nFROM\n  samples\nWHERE\n  $__timeFilter(ts)\n  AND metric = 'vus'\n  AND (CASE WHEN $testid != '<all>' THEN tags->>'testid' = $testid ELSE true END)\nGROUP BY 1\nORDER BY 1 ASC",
-          "refId": "A"
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "thresholds": "",
@@ -392,8 +392,29 @@
         {
           "alias": "",
           "format": "time_series",
-          "rawSql": "SELECT\n  1 AS \"time\",\n  SUM(value)\nFROM\n  samples\nWHERE\n  metric = 'http_reqs'\n  AND (tags->>'status')::int >= 400\n  AND (CASE WHEN $testid != '<all>' THEN tags->>'testid' = $testid ELSE true END)\nGROUP BY 1\nORDER BY 1 ASC",
-          "refId": "A"
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  1 AS \"time\",\n  SUM(value) \nFROM\n  samples\nWHERE\n  $__timeFilter(ts)\n  AND metric = 'http_reqs'\n  AND (tags->>'status')::int >= 400\n  AND (CASE WHEN $testid != '<all>' THEN tags->>'testid' = $testid ELSE true END)\nGROUP BY 1\nORDER BY 1 ASC",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "thresholds": "",
@@ -473,8 +494,29 @@
         {
           "alias": "",
           "format": "time_series",
-          "rawSql": "SELECT\n  1 AS \"time\",\n  SUM(value)\nFROM\n  samples\nWHERE\n  metric = 'http_reqs'\n  AND (tags->>'error_code')::int >= 1000\n  AND (tags->>'error_code')::int <= 1399\n  AND (CASE WHEN $testid != '<all>' THEN tags->>'testid' = $testid ELSE true END)\nGROUP BY 1\nORDER BY 1 ASC",
-          "refId": "A"
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  1 AS \"time\",\n  SUM(value)\nFROM\n  samples\nWHERE\n  $__timeFilter(ts)\n  AND metric = 'http_reqs'\n  AND (tags->>'error_code')::int >= 1000\n  AND (tags->>'error_code')::int <= 1399\n  AND (CASE WHEN $testid != '<all>' THEN tags->>'testid' = $testid ELSE true END)\nGROUP BY 1\nORDER BY 1 ASC",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "thresholds": "",
@@ -989,8 +1031,8 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": null,
-        "desc": false
+        "col": 3,
+        "desc": true
       },
       "styles": [
         {
@@ -1016,11 +1058,32 @@
         {
           "alias": "",
           "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
           "rawSql": "SELECT\n  tags->>'check' AS \"check\",\n  SUM(CASE WHEN value = 1 THEN 1 ELSE 0 END) AS \"successful\",\n  SUM(CASE WHEN value = 0 THEN 1 ELSE 0 END) AS \"failed\",\n  CASE WHEN COUNT(value) > 0 THEN SUM(CASE WHEN value = 0 THEN 1 ELSE 0 END)::real / COUNT(value)::real * 100.0 ELSE 0 END AS \"failure_rate\"\nFROM\n  samples\nWHERE\n  $__timeFilter(ts)\n  AND metric = 'checks'\n  AND (CASE WHEN $testid != '<all>' THEN tags->>'testid' = $testid ELSE true END)\nGROUP BY 1\nORDER BY 4 DESC\nLIMIT 100",
-          "refId": "A"
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
-      "title": "Checks with highest failure rate",
+      "title": "Checks",
       "transform": "table",
       "type": "table"
     },
@@ -1041,8 +1104,8 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": null,
-        "desc": false
+        "col": 6,
+        "desc": true
       },
       "styles": [
         {
@@ -1343,7 +1406,10 @@
     "list": [
       {
         "allValue": "'<all>'",
-        "current": {},
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "mytimescaledb",
         "definition": "",
         "hide": 0,
