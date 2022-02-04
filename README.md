@@ -1,6 +1,11 @@
-# The Open Source Load Testing Stack
+> ### ⚠ ️ This project is no longer maintained in this repository. 
+> 
+> Development and maintenance have been stopped in this repository. 
+> 
+> This project is active and maintained at [grafana/xk6-output-timescaledb](https://github.com/grafana/xk6-output-timescaledb).
 
-The open source load testing stack is a stack of open source software that works well together for the purpose of running load tests, storing results and visualizing those results in dashboards. The stack is made up of [k6](https://k6.io/), [TimescaleDB](https://www.timescale.com/) and [Grafana](https://grafana.com/).
+
+This project is a stack of open source software that works well together for the purpose of running load tests, storing results and visualizing those results in dashboards. The stack is made up of [k6](https://k6.io/), [TimescaleDB](https://www.timescale.com/) and [Grafana](https://grafana.com/).
 
 # Installation
 
